@@ -7,31 +7,34 @@ type ListNode = {
 }
 
 export const tree: {[key:string]: ListNode} = {
-  a: {
-    id: 'a',
+  root: {
+    id: 'root',
     parentId: '',
-    children: ['b'],
-  },
-  b: {
-    id: 'b',
-    parentId: 'a',
-    children: ['c', 'd'],
-  },
-  c: {
-    id: 'c',
-    parentId: 'b',
     children: [],
   },
-  d: {
-    id: 'd',
-    parentId: 'b',
-    children: [],
-  }
+  // a: {
+  //   id: 'a',
+  //   parentId: '',
+  //   children: ['b'],
+  // },
+  // b: {
+  //   id: 'b',
+  //   parentId: 'a',
+  //   children: ['c', 'd'],
+  // },
+  // c: {
+  //   id: 'c',
+  //   parentId: 'b',
+  //   children: [],
+  // },
+  // d: {
+  //   id: 'd',
+  //   parentId: 'b',
+  //   children: [],
+  // }
 }
 
-
-
-function addNode(parentId: string) {
+export function addNode(parentId: string = 'root'): string {
   if (!tree[parentId]) {
     throw new Error(`Unable to add node to parent ${parentId}`)
   }
@@ -45,10 +48,11 @@ function addNode(parentId: string) {
   }
 
   tree[parentId].children.push(id)
+
+  return id
 }
 
 function removeNode(id: string) {
-  console.log(`removing node ${id}`)
   const node = tree[id]
   if (!node) {
     throw new Error(`Unable to remove node ${id}`)
@@ -61,8 +65,14 @@ function removeNode(id: string) {
   delete tree[id]
 }
 
-// addNode('c')
-removeNode('b')
+const id1 = addNode()
+const id2 = addNode()
+const id3 = addNode()
+
+console.log(id1)
+console.log(id2)
+
+removeNode(id3)
 
 console.log(tree)
 

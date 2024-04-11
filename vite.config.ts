@@ -6,6 +6,7 @@ const experiments = [
   'keychords',
   'tree',
   'zoom',
+  'web-components',
 ]
 
 const input: {[key:string]: string} = {
