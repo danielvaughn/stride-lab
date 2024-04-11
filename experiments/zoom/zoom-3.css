@@ -1,0 +1,50 @@
+
+body {
+  overflow: hidden;
+}
+
+#container {
+  width: 700px;
+  height: 700px;
+  position: absolute;
+  overflow: hidden;
+  background-color: aquamarine;
+  border: 2px solid black;
+}
+
+#container > iframe {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.area {
+  border: 1px dashed black;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  background-color: navajowhite;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.rectangle {
+  background-color: navajowhite;
+  width: 250px;
+  height: 150px;
+  position: relative;
+}
+
+.text-area {
+  float: right;
+  position: relative;
+}
+
+

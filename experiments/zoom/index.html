@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0px;
+  
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+      transform-origin: 20% 20%;
+      transition: transform 3s linear;
+    }
+    .zoom-container {
+      width: 80%;
+      height: 80%;
+      outline: 3px solid #333;
+      margin: 10px;
+      overflow: hidden;
+    }
+    .zoom-container.zoomed iframe {
+      box-sizing: border-box;
+      transform: scale(3.5);
+    }
+    #container {
+      width: fit-content;
+    }
+    .outer-container {
+      overflow: hidden;
+    }
+    #iframe {
+      outline: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="zoom-container" class="zoom-container">
+      <iframe id="iframe" src="/experiments/zoom/zoomer.html"></iframe>
+    </div>
+
+    <!-- <div class="outer-container">
+      <div id="container">
+        <img
+          src="https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8fDA%3D"
+        /> 
+      </div>
+    </div> -->
+  </main>
+
+  <script type="module" src="./zoom-2.ts"></script>
+</body>
+</html>
