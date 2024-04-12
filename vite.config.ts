@@ -8,7 +8,7 @@ const experiments = [
   'tree',
   'zoom',
   'web-components',
-  'crdt',
+  'automerge',
 ]
 
 const input: {[key:string]: string} = {
