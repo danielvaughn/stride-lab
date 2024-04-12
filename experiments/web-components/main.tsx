@@ -7,9 +7,9 @@ import './index.css'
 
 const tree = new Tree()
 
-for (let i = 0; i < 100; i++) {
-  tree.addFirstChild()
-}
+// for (let i = 0; i < 100; i++) {
+//   tree.addFirstChild()
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 
