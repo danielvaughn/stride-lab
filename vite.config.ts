@@ -9,6 +9,7 @@ const experiments = [
   'zoom',
   'web-components',
   'automerge',
+  'yjs',
 ]
 
 const input: {[key:string]: string} = {
