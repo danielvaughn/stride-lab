@@ -11,6 +11,7 @@ const experiments = [
   'automerge',
   'yjs',
   'image-blob',
+  'fs',
 ]
 
 const input: {[key:string]: string} = {
