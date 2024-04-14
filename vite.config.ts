@@ -10,6 +10,7 @@ const experiments = [
   'web-components',
   'automerge',
   'yjs',
+  'image-blob',
 ]
 
 const input: {[key:string]: string} = {
