@@ -1,3 +1,4 @@
+import JSZip from "jszip"
 
 let db: IDBDatabase
 
@@ -122,3 +123,39 @@ function renderToListItem(items: string[]) {
     ul.appendChild(li)
   }
 }
+
+export function downloadAllImages() {
+  const zip = new JSZip()
+  const transaction = db.transaction(['images'], 'readonly')
+  const store = transaction.objectStore('images')
+  const request = store.getAll()
+
+  request.onsuccess = async function(e) {
+    const files = (e.target as IDBRequest).result
+
+    files.forEach((file, index) => {
+      zip.file(`image_${index + 1}.${file.file.type.split('/')[1]}`, file.file)
+    })
+
+    try {
+      const content = await zip.generateAsync({ type: 'blob' })
+      const url = URL.createObjectURL(content)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'images.zip'
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  request.onerror = function() {
+    console.error('Failed to download images')
+  }
+}
+
+const btn = document.getElementById('download')
+btn?.addEventListener('click', downloadAllImages)
