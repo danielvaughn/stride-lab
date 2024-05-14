@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 const experiments = [
   'keychords',
@@ -12,6 +13,9 @@ const experiments = [
   'yjs',
   'image-blob',
   'fs',
+  'css',
+  'yrs',
+  'loro',
 ]
 
 const input: {[key:string]: string} = {
@@ -24,7 +28,7 @@ for (const experiment of experiments) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [wasm(), react()],
+  plugins: [wasm(), react(), topLevelAwait()],
   worker: {
     format: 'es',
     plugins: () => [wasm()],
