@@ -25,7 +25,7 @@ const input: {[key:string]: string} = {
 }
 
 for (const experiment of experiments) {
-  input[experiment] = resolve(__dirname, `experiments/${experiment}/index.html`)
+  input[experiment] = resolve(__dirname, `lab/${experiment}/index.html`)
 }
 
 // https://vitejs.dev/config/
