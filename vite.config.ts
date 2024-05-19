@@ -3,29 +3,14 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import wasm from 'vite-plugin-wasm'
 import topLevelAwait from 'vite-plugin-top-level-await'
-
-const experiments = [
-  'keychords',
-  'tree',
-  'zoom',
-  'web-components',
-  'automerge',
-  'yjs',
-  'image-blob',
-  'fs',
-  'css',
-  'yrs',
-  'loro',
-  'yjs-adc',
-  'fsm',
-]
+import { labs } from './labs'
 
 const input: {[key:string]: string} = {
   main: resolve(__dirname, 'index.html')
 }
 
-for (const experiment of experiments) {
-  input[experiment] = resolve(__dirname, `lab/${experiment}/index.html`)
+for (const lab of labs) {
+  input[lab] = resolve(__dirname, `lab/${lab}/index.html`)
 }
 
 // https://vitejs.dev/config/

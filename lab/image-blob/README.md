@@ -1,4 +1,6 @@
 
+converts image sources into blobs
+
 - allow a user to paste an image from their clipboard
 - the image gets persisted to indexeddb
 - the image then gets an object url
