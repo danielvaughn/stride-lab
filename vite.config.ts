@@ -17,6 +17,7 @@ const experiments = [
   'yrs',
   'loro',
   'yjs-adc',
+  'fsm',
 ]
 
 const input: {[key:string]: string} = {
