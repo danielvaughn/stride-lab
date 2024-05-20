@@ -5,6 +5,7 @@ export const labs = [
   'fs',
   'fsm',
   'image-blob',
+  'json-benchmark',
   'keychords',
   'loro',
   'tree',
