@@ -1,6 +1,7 @@
 
 export const labs = [
   'automerge',
+  'css-data',
   'fs',
   'fsm',
   'image-blob',
