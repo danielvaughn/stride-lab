@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 
-function updateRule (stylesheet, selectorText, property, value) {
+function updateRule(stylesheet, selectorText, property, value) {
   const rules = Array.from(stylesheet.cssRules)
   const index = rules.findIndex((rule) => rule.selectorText === selectorText)
 
@@ -69,6 +69,8 @@ export function listen(targetNode) {
           break
       }
     })
+
+    console.timeEnd('render')
   })
 
   observer.observe(targetNode, {

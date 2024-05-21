@@ -26,11 +26,12 @@ for (let i = 0; i < 1500; i++) {
   root.appendChild(element)
 }
 
+
 // wait about 5 seconds and then update all of them
 
 let count = 0
 
-const int = window.setInterval(() => {
+const int = window.setTimeout(() => {
 
   if (count > 10) {
     window.clearInterval(int)
@@ -43,6 +44,7 @@ const int = window.setInterval(() => {
       element.setAttribute('data-style-background-color', randomColor(false))
       element.setAttribute('data-style-color', randomColor())
     })
+    console.time('render')
   })
   count += 1
 }, 2000)
