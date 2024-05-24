@@ -8,6 +8,7 @@ export const labs = [
   'json-benchmark',
   'keychords',
   'loro',
+  'style-states',
   'tree',
   'web-components',
   'yjs',
