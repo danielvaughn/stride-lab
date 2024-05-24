@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { initDoc, nodes, styles, data, createNodes } from './doc'
-import { randomId } from './utils'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -24,15 +23,7 @@ window.addEventListener('update', () => {
 })
 
 window.setTimeout(() => {
-  createNodes(5000)
+  createNodes(5)
 }, 0)
-
-// window.addEventListener('docwrite', (e) => {
-//   render(e.detail)
-// })
-
-// window.addEventListener('append', (e) => {
-//   updateTree(randomId(), e.detail)
-// })
 
 initDoc()
