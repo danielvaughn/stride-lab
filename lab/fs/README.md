@@ -22,3 +22,20 @@ technically we have a few choices:
 5. we read from and write to only a github repo
 
 DECISION: as of 4/14/24, I'm going to start with option 2; writing to indexeddb and then zip export. the reason is that it's the easiest in the short term
+
+EDIT: as of 5/24/24, I'm going to design a client/server model that can read/write to either IndexedDB or the file system.
+
+each server should implement the following interface:
+
+#### projects
+- listProjects()
+- getProject()
+- updateProject()
+- deleteProject()
+
+#### files
+- listFiles()
+- getFile()
+- updateFile()
+- clearFile()
+- deleteFile()

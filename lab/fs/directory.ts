@@ -1,14 +1,33 @@
 
-async function readFiles(handle: FileSystemDirectoryHandle) {
+type Directory = {
+  [key: string]: string | Directory
+}
+
+const directory: Directory = {}
+
+async function createFile(handle: FileSystemDirectoryHandle, initialContent: string = '') {
   const writeHandle = await handle.getFileHandle('test-file', { create: true })
   const writeable = await writeHandle.createWritable()
 
-  await writeable.write('test content')
+  await writeable.write(initialContent)
   await writeable.close()
+}
 
-  // for await (const entry of handle.values()) {
+async function readFiles(handle: FileSystemDirectoryHandle) {
+  console.log(`reading the ${handle.name} directory`)
 
-  // }
+  for await (const entry of handle.values()) {
+    let entryHandle: FileSystemFileHandle | FileSystemDirectoryHandle | null = null
+
+    if (entry.kind === 'file') {
+      entryHandle = await handle.getFileHandle(entry.name)
+      const file = await entryHandle.getFile()
+
+    } else if (entry.kind === 'directory') {
+      entryHandle = await handle.getDirectoryHandle(entry.name)
+      await readFiles(entryHandle)
+    }
+  }
 }
 
 async function openDirectory() {
@@ -30,11 +49,6 @@ async function openDirectory() {
 }
 
 window.onload = () => {
-
-  const btn = document.createElement('button')
-  btn.innerHTML = 'choose a directory'
-  btn.addEventListener('click', openDirectory)
-  document.body.appendChild(btn)
-
-  // openDirectory()
+  const btn = document.getElementById('open')
+  btn?.addEventListener('click', openDirectory)
 }
