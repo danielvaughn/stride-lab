@@ -1,7 +1,7 @@
 import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket'
 import { randomId } from './utils'
-import { initialData } from './data'
+import { data, initialData } from './data'
 
 // const doc = new Y.Doc()
 // const wsProvider = new WebsocketProvider('ws://localhost:1234', randomId(), doc)
@@ -58,10 +58,8 @@ function initDoc() {
   })
 
   ydoc.transact(() => {
-    const hierarchy = convertToYJSAdjacencyList(ydoc, 'hierarchy', initialData)
-    const attributes = convertToYJSMap(ydoc, 'attributes', initialData)
-    const content = convertToYJSMap(ydoc, 'content', initialData)
-    const styles = convertToYJSMap(ydoc, 'styles', initialData)
+    const tree = convertToYJSAdjacencyList(ydoc, 'tree', data)
+    const nodes = convertToYJSMap(ydoc, 'nodes', data)
   
     // todo: do something with these
   })

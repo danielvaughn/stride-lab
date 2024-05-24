@@ -1,21 +1,20 @@
-import { randomId } from "../yjs/utils"
 
-export class AdjTree {
+const data = {
+  tree: {
+    // html: [],
+  },
+  nodes: {
+    // html: {
+    //   content: '',
+    //   attributes: {},
+    //   styles: {},
+    //   rules: {},
+    // },
+  },
+}
 
-  constructor() {
-    this.model = {}
-    this.parent_cache = {}
-    this.data = {}
-  }
+class NodeTree {
 
-  add_node(parentId, index) {
-    if (!parentId) {
-      return
-    }
 
-    const parent = this.model[parentId]
-    
-
-  }
 
 }
