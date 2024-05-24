@@ -13,6 +13,7 @@ export const labs = [
   'web-components',
   'yjs',
   'yjs-adj',
+  'yjs-react',
   'yrs',
   'zoom',
 ]
