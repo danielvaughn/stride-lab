@@ -1,6 +1,7 @@
+/* eslint-disable no-case-declarations */
 import CanvasNode from "./CanvasNode"
 
-export default function App({ doc }) {
+export default function App({ activeId, doc }) {
   if (!doc) {
     return null
   }
@@ -11,6 +12,7 @@ export default function App({ doc }) {
       nodeId="root"
       styles={doc.get('styles')}
       data={doc.get('data')}
+      activeId={activeId}
     />
   )
 }
