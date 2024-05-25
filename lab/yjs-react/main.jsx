@@ -1,29 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { initDoc, nodes, styles, data, createNodes } from './doc'
+import { initDoc, createNodes } from './doc'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-function render() {
+function render(doc) {
   root.render(
     <React.StrictMode>
       <App
-        nodes={nodes}
-        data={data}
-        styles={styles}
+        doc={doc}
       />
     </React.StrictMode>
   )
 }
 
-window.addEventListener('update', () => {
-  render()
-  console.timeEnd('add_nodes')
+window.addEventListener('docwrite', (e) => {
+  render(e.detail)
 })
 
-window.setTimeout(() => {
-  createNodes(5)
+window.setTimeout(function nodeTimeout() {
+  createNodes(1)
 }, 0)
 
 initDoc()

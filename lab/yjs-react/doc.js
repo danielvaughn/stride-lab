@@ -3,15 +3,14 @@ import { randomColor, randomId } from './utils'
 
 const doc = new Y.Doc()
 
-// every document can have living forks - the main one is the source of truth
 export const main = doc.getMap('main')
 export const nodes = main.set('nodes', new Y.Map())
 export const data = main.set('data', new Y.Map())
 export const styles = main.set('styles', new Y.Map())
 
-main.observeDeep(() => {
-  const updateEvent = new CustomEvent('update')
-  window.dispatchEvent(updateEvent)
+doc.on('afterTransaction', () => {
+  const docWriteEvent = new CustomEvent('docwrite', { detail: main })
+  window.dispatchEvent(docWriteEvent)
 })
 
 function addNode(nodeId, type, parentId) {
@@ -33,17 +32,12 @@ function addNode(nodeId, type, parentId) {
 }
 
 export function initDoc() {
-  console.time('add_nodes')
   doc.transact(() => {
     addNode('root', 'html')
-    // addNode('abc', 'shape', 'root')
-    // addNode('def', 'shape', 'root')
-    // addNode('ghi', 'shape', 'abc')
   })
 }
 
 export function createNodes(count = 1) {
-  console.time('add_nodes')
   doc.transact(() => {
     for (let i = 0; i < count; i++) {
       addNode(randomId(), 'shape', 'root')

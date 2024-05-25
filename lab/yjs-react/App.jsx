@@ -1,16 +1,16 @@
 import CanvasNode from "./CanvasNode"
 
-export default function App({ nodes, styles, data }) {
-  if (!nodes || !styles || !data) {
+export default function App({ doc }) {
+  if (!doc) {
     return null
   }
 
   return (
     <CanvasNode
-      nodes={nodes}
+      nodes={doc.get('nodes')}
       nodeId="root"
-      styles={styles}
-      data={data}
+      styles={doc.get('styles')}
+      data={doc.get('data')}
     />
   )
 }
