@@ -24,5 +24,8 @@ export default defineConfig({
     rollupOptions: {
       input,
     }
+  },
+  server: {
+    hmr: false,
   }
 })

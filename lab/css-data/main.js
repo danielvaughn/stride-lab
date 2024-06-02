@@ -6,7 +6,7 @@ const root = document.getElementById('root')
 listen(root)
 
 // create a bunch of elements with some random styles
-for (let i = 0; i < 5000; i++) {
+for (let i = 0; i < 2000; i++) {
   const size = randomNumber(50, 16)
   const bgColor = randomColor()
   const borderColor = randomColor()
