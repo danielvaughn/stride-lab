@@ -16,36 +16,6 @@ function updateRules(stylesheet, styleUpdates) {
   }
 }
 
-function updateRule(stylesheet, selectorText, property, value) {
-  for (const cssRule of stylesheet.cssRules) {
-
-    if (cssRule.selectorText === selectorText) {
-      cssRule.styleMap.delete(property)
-      cssRule.styleMap.set(property, value)
-    }
-  }
-
-  // const rules = Array.from(stylesheet.cssRules)
-  // const index = rules.findIndex((rule) => rule.selectorText === selectorText)
-
-  // const rule = rules[index]
-
-  // const newStyles = {}
-
-  // if (index !== -1) {
-  //   stylesheet.deleteRule(index)
-  //   Array.from(rule.style).forEach((p) => {
-  //     newStyles[p] = rule.style[p]
-  //   })
-  // }
-
-  // newStyles[property] = value
-
-  // const cssString = Object.entries(newStyles).map(([p, v]) => `${p}: ${v};`).join('\n')
-
-  // stylesheet.insertRule(`${selectorText} { ${cssString} }`)
-}
-
 export function listen(targetNode) {
   const stylesheet = new CSSStyleSheet()
 
@@ -65,7 +35,6 @@ export function listen(targetNode) {
             for (const attribute of Object.values(addedNode.attributes)) {
               if (attribute.name.startsWith('data-styles')) {
                 styles = JSON.parse(attribute.value)
-                // styles[attribute.name.replace('data-style-', '')] = attribute.value
               }
             }
 
@@ -85,17 +54,6 @@ export function listen(targetNode) {
           if (mutation.attributeName === 'data-styles') {
             const styles = JSON.parse(mutation.target.dataset.styles)
             styleUpdates.set(`#${mutation.target.id}`, styles)
-
-            // for (const property in styles) {
-              // updateRule(stylesheet, `#${mutation.target.id}`, property, styles[property])
-            // }
-
-            // Object.entries(styles).map(function updateObjectRule([k, v]) {
-            //   updateRule(stylesheet, `#${mutation.target.id}`, k, v)
-            // })
-
-            // const styleProperty = mutation.attributeName.replace('data-style-', '')
-            // const styleValue = mutation.target.getAttribute(mutation.attributeName)
           }
 
           break
